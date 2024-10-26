@@ -22,17 +22,17 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
-from . import UPS, UPSEntity
+from . import NVME, NVMEEntity
 from .const import CONF_COORDINATOR, DOMAIN
 
 # endregion
 
 
 @dataclass
-class UPSSensorEntityDescription(SensorEntityDescription):
+class NVMESensorEntityDescription(SensorEntityDescription):
     """Describes NVME sensor entity."""
 
-    value_fn: Callable[[UPS], StateType] | None = None
+    value_fn: Callable[[NVME], StateType] | None = None
 
 
 async def async_setup_entry(
@@ -43,11 +43,11 @@ async def async_setup_entry(
     """Create the sensor entities."""
     coordinator: DataUpdateCoordinator = hass.data[DOMAIN][CONF_COORDINATOR]
 
-    sensors: list[UPSSensorEntity] = [
-        UPSSensorEntity(
+    sensors: list[NVMESensorEntity] = [
+        NVMESensorEntity(
             config_entry=config_entry,
             coordinator=coordinator,
-            description=UPSSensorEntityDescription(
+            description=NVMESensorEntityDescription(
                 device_class=SensorDeviceClass.BATTERY,
                 key="battery_percentage",
                 name="Battery Level",
@@ -56,10 +56,10 @@ async def async_setup_entry(
                 translation_key="battery_percentage",
             ),
         ),
-        UPSSensorEntity(
+        NVMESensorEntity(
             config_entry=config_entry,
             coordinator=coordinator,
-            description=UPSSensorEntityDescription(
+            description=NVMESensorEntityDescription(
                 device_class=SensorDeviceClass.CURRENT,
                 key="current",
                 name="Current",
@@ -68,10 +68,10 @@ async def async_setup_entry(
                 translation_key="current",
             ),
         ),
-        UPSSensorEntity(
+        NVMESensorEntity(
             config_entry=config_entry,
             coordinator=coordinator,
-            description=UPSSensorEntityDescription(
+            description=NVMESensorEntityDescription(
                 device_class=SensorDeviceClass.VOLTAGE,
                 key="load_voltage",
                 name="Load Voltage",
@@ -80,10 +80,10 @@ async def async_setup_entry(
                 translation_key="load_voltage",
             ),
         ),
-        UPSSensorEntity(
+        NVMESensorEntity(
             config_entry=config_entry,
             coordinator=coordinator,
-            description=UPSSensorEntityDescription(
+            description=NVMESensorEntityDescription(
                 device_class=SensorDeviceClass.POWER,
                 key="power",
                 name="Power",
@@ -92,10 +92,10 @@ async def async_setup_entry(
                 translation_key="power",
             ),
         ),
-        UPSSensorEntity(
+        NVMESensorEntity(
             config_entry=config_entry,
             coordinator=coordinator,
-            description=UPSSensorEntityDescription(
+            description=NVMESensorEntityDescription(
                 device_class=SensorDeviceClass.VOLTAGE,
                 key="",
                 name="PSU Voltage",
@@ -105,10 +105,10 @@ async def async_setup_entry(
                 value_fn=lambda u: u.load_voltage + u.shunt_voltage,
             ),
         ),
-        UPSSensorEntity(
+        NVMESensorEntity(
             config_entry=config_entry,
             coordinator=coordinator,
-            description=UPSSensorEntityDescription(
+            description=NVMESensorEntityDescription(
                 device_class=SensorDeviceClass.VOLTAGE,
                 key="shunt_voltage",
                 name="Shunt Voltage",
@@ -122,13 +122,13 @@ async def async_setup_entry(
     async_add_entities(sensors, update_before_add=True)
 
 
-class UPSSensorEntity(UPSEntity, SensorEntity):
-    """Representation of a UPS sensor."""
+class NVMESensorEntity(NVMEEntity, SensorEntity):
+    """Representation of a NVME sensor."""
 
     def __init__(
         self,
         coordinator: DataUpdateCoordinator,
-        description: UPSSensorEntityDescription,
+        description: NVMESensorEntityDescription,
         config_entry: ConfigEntry,
     ) -> None:
         """Initialise."""
