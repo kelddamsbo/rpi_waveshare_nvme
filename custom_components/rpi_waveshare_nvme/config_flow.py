@@ -130,7 +130,7 @@ async def _async_build_schema_with_user_input(
     return schema
 
 
-class RpiWaveshareUpsConfigFlow(ConfigFlow, domain=DOMAIN):
+class RpiWaveshareNvmeConfigFlow(ConfigFlow, domain=DOMAIN):
     """ConfigFlow for new integration configuration."""
 
     task_detect: Any = None
@@ -182,7 +182,7 @@ class RpiWaveshareUpsConfigFlow(ConfigFlow, domain=DOMAIN):
     @callback
     def async_get_options_flow(config_entry: ConfigEntry) -> OptionsFlow:
         """Create the options flow."""
-        return RpiWaveshareUpsConfigFlowOptions(config_entry)
+        return RpiWaveshareNvmeConfigFlowOptions(config_entry)
 
     async def async_step_final(
         self, user_input: dict[str, Any] | None = None
@@ -264,7 +264,7 @@ class RpiWaveshareUpsConfigFlow(ConfigFlow, domain=DOMAIN):
         return self.async_show_progress_done(next_step_id=STEP_SELECT)
 
 
-class RpiWaveshareUpsConfigFlowOptions(OptionsFlow):
+class RpiWaveshareNvmeConfigFlowOptions(OptionsFlow):
     """OptionsFlow for an existing integration configuration."""
 
     def __init__(self, config_entry: ConfigEntry) -> None:
