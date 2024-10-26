@@ -19,6 +19,6 @@ DEF_HAT_TYPE: str = "a"
 DEF_MIN_CHARGING: float = -100
 DEF_UPDATE_INTERVAL: int = 10
 
-DOMAIN: str = "rpi_waveshare_ups"
+DOMAIN: str = "rpi_waveshare_nvme"
 
 PLATFORMS: list[str] = [Platform.BINARY_SENSOR, Platform.SENSOR]
