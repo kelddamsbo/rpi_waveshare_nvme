@@ -32,7 +32,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class UPS:
-    """Represenation of the UPS device."""
+    """Represenation of the NVME device."""
 
     def __enter__(self):
         """Enter magic method."""
@@ -58,7 +58,7 @@ class UPS:
         self._ina219.bus.close()
 
     def gather_details(self) -> None:
-        """Retrieve the required details for the UPS."""
+        """Retrieve the required details for the NVME."""
         self._current = -self._ina219.get_current_ma() if self._is_model_d else self._ina219.get_current_ma()
         self._load_voltage = self._ina219.get_bus_voltage_v()
         self._power = self._ina219.get_power_w()
@@ -94,8 +94,8 @@ class UPS:
         return self._shunt_voltage
 
 
-class UPSEntity(CoordinatorEntity):
-    """Representation of a UPS entity."""
+class NVMEEntity(CoordinatorEntity):
+    """Representation of a NVME entity."""
 
     def __init__(
         self, coordinator: DataUpdateCoordinator, config_entry: ConfigEntry
@@ -138,15 +138,15 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     # endregion
 
     # region #-- setup the coordinator --#
-    async def _async_data_coordinator_update() -> UPS:
-        with UPS(
+    async def _async_data_coordinator_update() -> NVME:
+        with NVME(
             i2c_bus=config_entry.options.get(CONF_HAT_BUS),
             i2c_address=int(config_entry.options.get(CONF_HAT_ADDRESS), 0),
             is_model_d=(config_entry.options.get(CONF_HAT_TYPE, 'A').upper() == 'D'),
-        ) as ups_data:
+        ) as nvme_data:
             pass
 
-        return ups_data
+        return nvme_data
 
     coordinator: DataUpdateCoordinator = DataUpdateCoordinator(
         hass,
