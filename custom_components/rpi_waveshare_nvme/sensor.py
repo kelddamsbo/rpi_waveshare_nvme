@@ -30,7 +30,7 @@ from .const import CONF_COORDINATOR, DOMAIN
 
 @dataclass
 class UPSSensorEntityDescription(SensorEntityDescription):
-    """Describes UPS sensor entity."""
+    """Describes NVME sensor entity."""
 
     value_fn: Callable[[UPS], StateType] | None = None
 
