@@ -8,7 +8,7 @@
     "integration_type": "device",
     "iot_class": "local_polling",
     "issue_tracker": "https://github.com/kelddamsbo/rpi_waveshare_nvme/issues",
-    "name": "Waveshare UPS for Raspberry Pi",
+    "name": "Waveshare PCIe To M.2 Adapter for Raspberry Pi 5",
     "requirements": [
         "smbus2>=0.4.2"
     ],
