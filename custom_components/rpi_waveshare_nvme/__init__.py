@@ -1,4 +1,4 @@
-"""RPi Waveshare UPS Integration."""
+"""RPi Waveshare NVME Integration."""
 
 # region #-- imports --#
 import logging
