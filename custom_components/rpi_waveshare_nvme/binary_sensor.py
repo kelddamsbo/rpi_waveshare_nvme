@@ -31,7 +31,7 @@ class UPSBinarySensorDescriptionMixin:
 class UPSBinarySensorEntityDescription(
     BinarySensorEntityDescription, UPSBinarySensorDescriptionMixin
 ):
-    """Describes UPS binary sensor entity."""
+    """Describes NVME binary sensor entity."""
 
 
 async def async_setup_entry(
@@ -61,12 +61,12 @@ async def async_setup_entry(
 
 
 class UPSBinarySensorEntity(UPSEntity, BinarySensorEntity):
-    """Representation of a UPS binary sensor."""
+    """Representation of a NVME binary sensor."""
 
     def __init__(
         self,
         coordinator: DataUpdateCoordinator,
-        description: UPSBinarySensorEntityDescription,
+        description: NVMEBinarySensorEntityDescription,
         config_entry: ConfigEntry,
     ) -> None:
         """Initialise."""
