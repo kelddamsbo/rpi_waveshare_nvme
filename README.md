@@ -1,11 +1,11 @@
-# Waveshare UPS for Raspberry Pi
+# Waveshare PCIe To M.2 Adapter for Raspberry Pi 5
 
-Home Assistant integration for the Waveshare UPS for Raspberry Pi.
+Home Assistant integration for the Waveshare PCIe To M.2 Adapter for Raspberry Pi 5.
 
 ## Description
 
 This integration can be used to get information over i2c for the
-Waveshare UPS for the Raspberry Pi.
+Waveshare PCIe To M.2 Adapter for the Raspberry Pi 5.
 The integration assumes that you have followed the instructions for
 enabling i2c on your Raspberry Pi. These instructions will differ
 depending on how you are running Home Assistant.
