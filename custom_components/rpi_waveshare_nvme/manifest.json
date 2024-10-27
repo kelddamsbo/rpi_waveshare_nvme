@@ -3,12 +3,12 @@
         "@kelddamsbo"
     ],
     "config_flow": true,
-    "domain": "rpi_waveshare_ups",
-    "documentation": "https://github.com/kelddamsbo/rpi_waveshare_ups",
+    "domain": "rpi_waveshare_nvme",
+    "documentation": "https://github.com/kelddamsbo/rpi_waveshare_nvme",
     "integration_type": "device",
     "iot_class": "local_polling",
-    "issue_tracker": "https://github.com/kelddamsbo/rpi_waveshare_ups/issues",
-    "name": "Waveshare UPS & M.2 Adapter for Raspberry Pi 5",
+    "issue_tracker": "https://github.com/kelddamsbo/rpi_waveshare_nvme/issues",
+    "name": "Waveshare M.2 Adapter for Raspberry Pi 5",
     "requirements": [
         "smbus2>=0.4.2"
     ],
