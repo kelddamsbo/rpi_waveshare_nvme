@@ -56,8 +56,8 @@ async def async_setup_entry(
 #            ),
 #        ),
 #    ]
-
-    async_add_entities(binary_sensors, update_before_add=True)
+#
+#    async_add_entities(binary_sensors, update_before_add=True)
 
 
 class UPSBinarySensorEntity(UPSEntity, BinarySensorEntity):
