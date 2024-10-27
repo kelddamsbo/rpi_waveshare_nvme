@@ -65,17 +65,17 @@ async def _async_build_schema_with_user_input(
                         unit_of_measurement=UnitOfTime.SECONDS,
                     )
                 ),
-                vol.Required(
-                    CONF_MIN_CHARGING,
-                    default=user_input.get(CONF_MIN_CHARGING, DEF_MIN_CHARGING),
-                ): selector.NumberSelector(
-                    config=selector.NumberSelectorConfig(
-                        max=0,
-                        mode=selector.NumberSelectorMode.BOX,
-                        step=1,
-                        unit_of_measurement=UnitOfElectricCurrent.MILLIAMPERE,
-                    )
-                ),
+#                vol.Required(
+#                    CONF_MIN_CHARGING,
+#                    default=user_input.get(CONF_MIN_CHARGING, DEF_MIN_CHARGING),
+#                ): selector.NumberSelector(
+#                    config=selector.NumberSelectorConfig(
+#                        max=0,
+#                        mode=selector.NumberSelectorMode.BOX,
+#                        step=1,
+#                        unit_of_measurement=UnitOfElectricCurrent.MILLIAMPERE,
+#                    )
+#                ),
             }
         )
     elif step == STEP_SELECT:
