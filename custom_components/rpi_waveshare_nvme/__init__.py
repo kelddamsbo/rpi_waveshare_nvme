@@ -1,4 +1,4 @@
-"""RPi Waveshare NVME Integration."""
+"""RPi Waveshare UPS Integration."""
 
 # region #-- imports --#
 import logging
@@ -33,7 +33,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class UPS:
-    """Represenation of the NVME device."""
+    """Represenation of the UPS device."""
 
     def __enter__(self):
         """Enter magic method."""
@@ -99,8 +99,8 @@ class UPS:
         return self._shunt_voltage
 
 
-class NVMEEntity(CoordinatorEntity):
-    """Representation of a NVME entity."""
+class UPSEntity(CoordinatorEntity):
+    """Representation of a UPS entity."""
 
     def __init__(
         self, coordinator: DataUpdateCoordinator, config_entry: ConfigEntry
@@ -144,14 +144,14 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
 
     # region #-- setup the coordinator --#
     async def _async_data_coordinator_update() -> NVME:
-        with NVME(
+        with UPS(
             i2c_bus=config_entry.options.get(CONF_HAT_BUS),
             i2c_address=int(config_entry.options.get(CONF_HAT_ADDRESS), 0),
             is_model_d=(config_entry.options.get(CONF_HAT_TYPE, 'A').upper() == 'D'),
-        ) as nvme_data:
+        ) as ups_data:
             pass
 
-        return nvme_data
+        return ups_data
 
     coordinator: DataUpdateCoordinator = DataUpdateCoordinator(
         hass,
