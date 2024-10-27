@@ -24,7 +24,7 @@ from .const import (
 )
 from .ina219.INA219_AB import INA219_AB
 from .ina219.INA219_D import INA219_D
-from .ina219.INA219_NVME import INA219NVME
+from .ina219.INA219_NVME import INA219_NVME
 from .logger import Logger
 
 # endregion
