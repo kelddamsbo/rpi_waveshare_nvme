@@ -50,7 +50,7 @@ class UPS:
         self._current: float | None = None
 #        self._ina219: INA219_D | INA219_AB = INA219_D(addr=i2c_address, i2c_bus=i2c_bus) if is_model_d else INA219_AB(addr=i2c_address, i2c_bus=i2c_bus)
 # KELD
-        self._ina219: INA219_D | INA219_NVME = INA219_D(addr=i2c_address, i2c_bus=i2c_bus) if is_model_d else INA219_NVME(addr=i2c_address, i2c_bus=i2c_bus)
+        self._ina219: INA219_D | INA219_AB | INA219_NVME = INA219_D(addr=i2c_address, i2c_bus=i2c_bus) if is_model_d else INA219_AB(addr=i2c_address, i2c_bus=i2c_bus) else INA219_NVME(addr=i2c_address, i2c_bus=i2c_bus)
         self._load_voltage: float | None = None
         self._power: float | None = None
         self._shunt_voltage: float | None = None
@@ -143,7 +143,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     # endregion
 
     # region #-- setup the coordinator --#
-    async def _async_data_coordinator_update() -> NVME:
+    async def _async_data_coordinator_update() -> UPS:
         with UPS(
             i2c_bus=config_entry.options.get(CONF_HAT_BUS),
             i2c_address=int(config_entry.options.get(CONF_HAT_ADDRESS), 0),
