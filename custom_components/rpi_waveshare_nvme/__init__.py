@@ -22,8 +22,6 @@ from .const import (
     DOMAIN,
     PLATFORMS,
 )
-from .ina219.INA219_AB import INA219_AB
-from .ina219.INA219_D import INA219_D
 from .ina219.INA219_NVME import INA219_NVME
 from .logger import Logger
 
@@ -50,8 +48,7 @@ class UPS:
         self._current: float | None = None
 #        self._ina219: INA219_D | INA219_AB = INA219_D(addr=i2c_address, i2c_bus=i2c_bus) if is_model_d else INA219_AB(addr=i2c_address, i2c_bus=i2c_bus)
 # KELD
-        self._ina219: INA219_D | INA219_NVME = INA219_D(addr=i2c_address, i2c_bus=i2c_bus) if is_model_d else INA219_NVME(addr=i2c_address, i2c_bus=i2c_bus)
-#        else INA219_NVME(addr=i2c_address, i2c_bus=i2c_bus)
+        self._ina219: INA219_NVME = INA219_NVME(addr=i2c_address, i2c_bus=i2c_bus)
         self._load_voltage: float | None = None
         self._power: float | None = None
         self._shunt_voltage: float | None = None
@@ -63,8 +60,9 @@ class UPS:
 
     def gather_details(self) -> None:
         """Retrieve the required details for the NVME."""
-        self._current = -self._ina219.get_current_ma() if self._is_model_d else self._ina219.get_current_ma()
-#KELD
+        #self._current = -self._ina219.get_current_ma() if self._is_model_d else self._ina219.get_current_ma()
+        self._current = -self._ina219.get_current_ma()
+        #KELD
         self._load_voltage = self._ina219.get_bus_voltage_v()
         self._power = self._ina219.get_power_w()
         self._shunt_voltage = self._ina219.get_shunt_voltage_mv() / 1000
