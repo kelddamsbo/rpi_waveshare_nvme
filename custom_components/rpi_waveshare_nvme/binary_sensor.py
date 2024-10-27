@@ -42,20 +42,20 @@ async def async_setup_entry(
     """Create the binary sensor entities."""
     coordinator: DataUpdateCoordinator = hass.data[DOMAIN][CONF_COORDINATOR]
 
-    binary_sensors: list[UPSBinarySensorEntity] = [
-        UPSBinarySensorEntity(
-            config_entry=config_entry,
-            coordinator=coordinator,
-            description=UPSBinarySensorEntityDescription(
-                device_class=BinarySensorDeviceClass.BATTERY_CHARGING,
-                key="battery_state",
-                name="Battery State",
-                translation_key="battery_state",
-                value_fn=lambda u: u.current
-                >= config_entry.options.get(CONF_MIN_CHARGING, DEF_MIN_CHARGING),
-            ),
-        ),
-    ]
+#    binary_sensors: list[UPSBinarySensorEntity] = [
+#        UPSBinarySensorEntity(
+#            config_entry=config_entry,
+#            coordinator=coordinator,
+#            description=UPSBinarySensorEntityDescription(
+#                device_class=BinarySensorDeviceClass.BATTERY_CHARGING,
+#                key="battery_state",
+#                name="Battery State",
+#                translation_key="battery_state",
+#                value_fn=lambda u: u.current
+#                >= config_entry.options.get(CONF_MIN_CHARGING, DEF_MIN_CHARGING),
+#            ),
+#        ),
+#    ]
 
     async_add_entities(binary_sensors, update_before_add=True)
 
