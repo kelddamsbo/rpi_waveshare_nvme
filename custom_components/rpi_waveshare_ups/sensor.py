@@ -32,7 +32,7 @@ from .const import CONF_COORDINATOR, DOMAIN
 class UPSSensorEntityDescription(SensorEntityDescription):
     """Describes UPS sensor entity."""
 
-    value_fn: Callable[[NVME], StateType] | None = None
+    value_fn: Callable[[UPS], StateType] | None = None
 
 
 async def async_setup_entry(
