@@ -106,9 +106,6 @@ async def _async_build_schema_with_user_input(
                         mode=selector.SelectSelectorMode.DROPDOWN,
                         multiple=False,
                         options=[
-                            "a",
-                            "b",
-                            "d",
                             "nvme",
                         ],
                         translation_key="hat_type",
