@@ -44,18 +44,18 @@ async def async_setup_entry(
     coordinator: DataUpdateCoordinator = hass.data[DOMAIN][CONF_COORDINATOR]
 
     sensors: list[UPSSensorEntity] = [
-        UPSSensorEntity(
-            config_entry=config_entry,
-            coordinator=coordinator,
-            description=UPSSensorEntityDescription(
-                device_class=SensorDeviceClass.BATTERY,
-                key="battery_percentage",
-                name="Battery Level",
-                native_unit_of_measurement=PERCENTAGE,
-                state_class=SensorStateClass.MEASUREMENT,
-                translation_key="battery_percentage",
-            ),
-        ),
+#        UPSSensorEntity(
+#            config_entry=config_entry,
+#            coordinator=coordinator,
+#            description=UPSSensorEntityDescription(
+#                device_class=SensorDeviceClass.BATTERY,
+#                key="battery_percentage",
+#                name="Battery Level",
+#                native_unit_of_measurement=PERCENTAGE,
+#                state_class=SensorStateClass.MEASUREMENT,
+#                translation_key="battery_percentage",
+#            ),
+#        ),
         UPSSensorEntity(
             config_entry=config_entry,
             coordinator=coordinator,
