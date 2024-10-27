@@ -1,8 +1,8 @@
 {
     "config": {
         "abort": {
-            "already_configured": "Only a single UPS can be configured.",
-            "no_comms": "Unable to communicate with the UPS on i2c.{error_msg}"
+            "already_configured": "Only a single HAT can be configured.",
+            "no_comms": "Unable to communicate with the HAT on i2c.{error_msg}"
         },
         "progress": {
             "task_detect": "Detecting available i2c addresses"
@@ -13,7 +13,7 @@
                     "hat_address": "Address of the HAT",
                     "hat_type": "Version of the HAT",
                     "name": "Name for the integration entry",
-                    "update_interval": "Update interval for retrieving data from the UPS"
+                    "update_interval": "Update interval for retrieving data from the HAT"
                 }
             }
         }
@@ -50,7 +50,7 @@
             "init": {
                 "data": {
                     "min_charging": "Lowest current value considered for charging",
-                    "update_interval": "Update interval for retrieving data from the UPS"
+                    "update_interval": "Update interval for retrieving data from the HAT"
                 },
                 "data_description": {
                     "min_charging": "The lowest current value before considering the batteries to be powering the Pi."
@@ -61,9 +61,9 @@
     "selector": {
         "hat_type": {
             "options": {
-                "a": "A",
-                "b": "B",
-                "d": "D",
+#                "a": "A",
+#                "b": "B",
+#                "d": "D",
                 "n": "N"
             }
         }
