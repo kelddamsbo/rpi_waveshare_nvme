@@ -1,4 +1,4 @@
-# Waveshare PCIe To M.2 Adapter for Raspberry Pi 5
+# Waveshare UPS & PCIe To M.2 Adapter for Raspberry Pi 5
 
 Home Assistant integration for the Waveshare PCIe To M.2 Adapter for Raspberry Pi 5.
 
