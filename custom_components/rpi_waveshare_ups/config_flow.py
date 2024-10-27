@@ -109,6 +109,7 @@ async def _async_build_schema_with_user_input(
                             "a",
                             "b",
                             "d",
+                            "nvme",
                         ],
                         translation_key="hat_type",
                     )
